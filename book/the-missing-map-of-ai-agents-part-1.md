@@ -44,7 +44,7 @@
 
 AI is currently full of buzzwords. Depending on which article, vendor announcement, YouTube video, or LinkedIn post you read, you will encounter terms like *AI agents*, *MCP*, *RAG*, *skills*, *prompt engineering*, *context engineering*, and dozens of others. 
 
-![The AI Buzzwords Landscape](assets/ai-buzzwords-landscape.png)
+![The AI Buzzwords Landscape](../assets/ai-buzzwords-landscape.png)
 
 The problem is not that these concepts are difficult. The problem is that they are often presented **without a common map**.
 
@@ -70,7 +70,7 @@ By the end of this volume, you should understand:
 
 Before we talk about agents, we need to understand what powers them. There are a lot of terms floating around, and they nest inside each other like Russian dolls:
 
-![AI, Machine Learning, Deep Learning, and LLM Hierarchy](assets/ai-ml-dl-llm-hierarchy.png)
+![AI, Machine Learning, Deep Learning, and LLM Hierarchy](../assets/ai-ml-dl-llm-hierarchy.png)
 
 - **AI (Artificial Intelligence)** — covers all forms of machine intelligence. The broadest umbrella.
 - **ML (Machine Learning)** — a subset of AI that learns from data and patterns rather than being explicitly programmed with rigid rules.
@@ -102,13 +102,13 @@ Strip away the marketing, and an LLM is essentially two components:
 
 During pre-training, billions of floating-point parameters are adjusted to capture language grammar, factual knowledge, coding patterns, and reasoning behaviors. At runtime, the code remains fixed while the learned parameters provide the model's capabilities.
 
-![LLM Architecture: Small Inference Code and Large Parameter Weights](assets/llm-code-and-weights.png)
+![LLM Architecture: Small Inference Code and Large Parameter Weights](../assets/llm-code-and-weights.png)
 
 ### Why "Just Asking Questions" Has Limits
 
 If you interact with a bare LLM, the interaction pattern is single-shot: you ask, it answers. One prompt in, one completion out.
 
-![The Limits of Single-Shot Prompting](assets/prompt-engineering-limits.png)
+![The Limits of Single-Shot Prompting](../assets/prompt-engineering-limits.png)
 
 The quality of the answer depends heavily on the clarity of the question. The model acts like a mirror: it reflects the precision (or ambiguity) of your input. If you structure your request well, the model can produce a strong answer.
 
@@ -134,7 +134,7 @@ If the LLM is a brain in a jar — capable of deep reasoning but completely disc
 
 This is the central equation of modern AI engineering. Every agent framework, product, and protocol is an implementation of these three components.
 
-![The Agent Architecture Equation: LLM + Context + Tools](assets/agent-architecture-equation.png)
+![The Agent Architecture Equation: LLM + Context + Tools](../assets/agent-architecture-equation.png)
 
 - **LLM** provides the general reasoning, pattern matching, and decision-making engine.
 - **Context** provides the working set of information: instructions, immediate task goals, past conversation history, relevant facts, and current environment state.
@@ -179,7 +179,7 @@ When you interact with an agent over multiple turns, you ask a question, receive
 
 Here is what actually occurs under the hood:
 
-![Multi-turn Session History Accumulation](assets/session-history-accumulation.png)
+![Multi-turn Session History Accumulation](../assets/session-history-accumulation.png)
 
 - **Round 1:** You send Question 1. The model generates Answer 1.
 - **Round 2:** You ask a follow-up. Because the underlying model is completely stateless, the agent framework appends *Question 1 + Answer 1 + Question 2* into a single combined block and sends it to the model.
@@ -204,7 +204,7 @@ Compression introduces engineering trade-offs: aggressive summarization dilutes 
 #### The Structured Context Stack
 If you inspect the actual payload delivered into the model's context window, you will find a distinct, layered architecture:
 
-![Structured Context Stack: System Prompt, Tools, History, and Status Bar](assets/structured-context-stack.png)
+![Structured Context Stack: System Prompt, Tools, History, and Status Bar](../assets/structured-context-stack.png)
 
 - **System Prompt (Static Prefix):** Foundational instructions defining who the agent is, its role, operational boundaries, and formatting rules.
 - **Tool Definitions (Static Prefix):** Machine-readable schemas (names, parameters, descriptions) of all functions the agent is allowed to invoke.
@@ -245,7 +245,7 @@ RAG provides the agent with an on-demand retrieval pipeline:
 - The retrieved snippets are merged with the user's prompt to assemble an augmented context.
 - The model generates an answer strictly grounded in the supplied snippets.
 
-![Retrieval-Augmented Generation (RAG) Flow](assets/rag-knowledge-retrieval-flow.png)
+![Retrieval-Augmented Generation (RAG) Flow](../assets/rag-knowledge-retrieval-flow.png)
 
 > **Core Insight:** RAG uses the context window as a dynamic briefing channel. You do not need to retrain or fine-tune weights; you simply provide the right facts at the precise moment of reasoning.
 
@@ -260,7 +260,7 @@ As agents are assigned more responsibilities, teams often try to pack every conc
 
 This problem led directly to the development of **Agent Skills**: modular, on-demand packages of procedural knowledge loaded into context only when needed.
 
-![Agent Skills Catalogue and Progressive Disclosure](assets/agent-skills-progressive-disclosure.png)
+![Agent Skills Catalogue and Progressive Disclosure](../assets/agent-skills-progressive-disclosure.png)
 
 #### Anatomy of a Skill
 A skill is a self-contained, version-controlled module (often starting as a clear Markdown specification) containing:
@@ -308,7 +308,7 @@ Their architectural purpose is fundamentally distinct:
 
 Without tools, an LLM is purely conversational. It can suggest code, but cannot test it. It can propose a SQL query, but cannot execute it.
 
-![Tools as the Agent's Bridge to External Environments](assets/tools-agent-action-bridge.png)
+![Tools as the Agent's Bridge to External Environments](../assets/tools-agent-action-bridge.png)
 
 Tools turn the agent from a passive observer into an active participant capable of modifying external digital state:
 
@@ -347,7 +347,7 @@ Because of this architectural complexity, modern AI engineering reframes the equ
 
 > **Agent = LLM + Harness**
 
-![Harness Engineering: Building Reliable Systems Around the Model](assets/harness-engineering-architecture.png)
+![Harness Engineering: Building Reliable Systems Around the Model](../assets/harness-engineering-architecture.png)
 
 The **Harness** is the comprehensive software infrastructure built around the raw model. It encompasses:
 - Context and memory management pipelines
