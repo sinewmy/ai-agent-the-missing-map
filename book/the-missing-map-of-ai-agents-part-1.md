@@ -4,10 +4,9 @@
 
 **Stephen Wang** | *System & Enterprise Architect*  
 *October 2026 · First Edition · An Architect's Field Guide*  
-*Born out of whiteboard discussions with engineering peers to build a shared map of the AI landscape*
+*Born out of whiteboard discussions to build a shared map of the AI landscape*
 
 ---
-
 ## Contents at a Glance
 
 - [Introduction: Why This Field Guide Exists](#introduction-why-this-field-guide-exists)
@@ -20,11 +19,11 @@
   - [The Agent Equation](#the-agent-equation)
   - [Static View vs. Dynamic View](#static-view-vs-dynamic-view)
 - [Chapter 3 — Context Engineering: Managing the Agent's Information](#chapter-3--context-engineering-managing-the-agents-information)
-  - [3.1 Working Memory: Inside a Session](#31-working-memory-inside-a-session)
-  - [3.2 Cross-Session Memory: Remembering Across Conversations](#32-cross-session-memory-remembering-across-conversations)
-  - [3.3 External Factual Knowledge: Knowledge Bases & RAG](#33-external-factual-knowledge-knowledge-bases--rag)
-  - [3.4 Actionable Procedural Knowledge: Skills](#34-actionable-procedural-knowledge-skills)
-  - [3.5 Knowledge vs. Skills: Clarifying the Distinction](#35-knowledge-vs-skills-clarifying-the-distinction)
+  - [Working Memory: Inside a Session](#working-memory-inside-a-session)
+  - [Cross-Session Memory: Remembering Across Conversations](#cross-session-memory-remembering-across-conversations)
+  - [External Factual Knowledge: Knowledge Bases & RAG](#external-factual-knowledge-knowledge-bases--rag)
+  - [Actionable Procedural Knowledge: Skills](#actionable-procedural-knowledge-skills)
+  - [Knowledge vs. Skills: Clarifying the Distinction](#knowledge-vs-skills-clarifying-the-distinction)
 - [Chapter 4 — Tools and MCP: The Agent's Bridge to the Outside World](#chapter-4--tools-and-mcp-the-agents-bridge-to-the-outside-world)
   - [Giving the Model Hands and Eyes](#giving-the-model-hands-and-eyes)
   - [Standardizing the Interface: Model Context Protocol (MCP)](#standardizing-the-interface-model-context-protocol-mcp)
@@ -33,12 +32,9 @@
   - [Why the Harness Matters](#why-the-harness-matters)
 - [Chapter 6 — Synthesis: Putting the Buzzwords on the Map](#chapter-6--synthesis-putting-the-buzzwords-on-the-map)
 - [Looking Ahead: Volume 2 Preview (The Runtime Engine)](#looking-ahead-volume-2-preview-the-runtime-engine)
-- [Appendix: Quick Reference & Equations](#appendix-quick-reference--equations)
+- [Further Reading](#further-reading)
 - [About the Author](#about-the-author)
 
----
-
-<div style="page-break-after: always;"></div>
 
 ## Introduction: Why This Field Guide Exists
 
@@ -172,7 +168,7 @@ Let's examine each layer.
 
 ---
 
-### 3.1 Working Memory: Inside a Session
+### Working Memory: Inside a Session
 
 #### Everything Starts with the Session
 When you interact with an agent over multiple turns, you ask a question, receive an answer, clarify your request, and iterate.
@@ -213,7 +209,7 @@ If you inspect the actual payload delivered into the model's context window, you
 
 ---
 
-### 3.2 Cross-Session Memory: Remembering Across Conversations
+### Cross-Session Memory: Remembering Across Conversations
 
 Within a single session, state is preserved by appending history. But what happens tomorrow when you start a new chat?
 
@@ -226,7 +222,7 @@ Advanced agent systems address this through **User Memory / Cross-Session Memory
 
 ---
 
-### 3.3 External Factual Knowledge: Knowledge Bases & RAG
+### External Factual Knowledge: Knowledge Bases & RAG
 
 #### The Knowledge Gap
 A pre-trained foundation model possesses broad world knowledge, but it knows nothing about:
@@ -251,7 +247,7 @@ RAG provides the agent with an on-demand retrieval pipeline:
 
 ---
 
-### 3.4 Actionable Procedural Knowledge: Skills
+### Actionable Procedural Knowledge: Skills
 
 #### The Problem with Giant System Prompts
 As agents are assigned more responsibilities, teams often try to pack every conceivable procedure into a massive system prompt:
@@ -283,7 +279,7 @@ Equipping it with a computer use skill provides a concrete loop: take a screensh
 
 ---
 
-### 3.5 Knowledge vs. Skills: Clarifying the Distinction
+### Knowledge vs. Skills: Clarifying the Distinction
 
 A frequent point of confusion is: *"If both are stored as Markdown or text files, what is the difference between a Knowledge Base and a Skill?"*
 
@@ -404,44 +400,6 @@ In production, an agent does not sit idle. It executes across time, makes mistak
 - **The Enterprise Harness:** Verification gates, sandboxed execution, audit trails, and security trust boundaries at scale.
 
 These runtime systems build directly upon the static architecture established in this field guide.
-
----
-
-<div style="page-break-after: always;"></div>
-
-## Appendix: Quick Reference & Equations
-
-### The Core Architectural Equations
-
-```
-LLM = Inference Code + Parameters (Weights)
-
-Agent = LLM + Context + Tools
-
-Agent = LLM + Harness
-
-Harness = Context Management + Tool Interfaces + Reliability & Guardrails
-```
-
-### The Nested AI Hierarchy
-
-```
-AI ⊃ Machine Learning ⊃ Deep Learning ⊃ LLMs
-```
-
-### The Structured Context Stack
-
-```
-┌────────────────────────────────────────────────────────┐
-│  Working Session Context (System Prompt + Tool Schemas)│
-├────────────────────────────────────────────────────────┤
-│  Dynamic Additions: RAG (Facts) + Skills (Workflows)   │
-├────────────────────────────────────────────────────────┤
-│  Conversation History & Tool Results                   │
-├────────────────────────────────────────────────────────┤
-│  Agent Status Bar & Runtime State                      │
-└────────────────────────────────────────────────────────┘
-```
 
 ---
 
